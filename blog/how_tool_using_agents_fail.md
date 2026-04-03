@@ -95,9 +95,9 @@ This is the most interesting finding. I designed a scenario where an npm package
 6. Installs `commander`, `@types/node`
 7. Rebuilds the project
 
-The rebuild generates *new* `.map` files — `dist/core/algorithm.js.map`, `dist/core/license-check.js.map` — that didn't exist before. The more capable model, trying to be more thorough, made the problem worse.
+The rebuild generates *new* `.map` files — `dist/core/algorithm.js.map`, `dist/core/license-check.js.map`. These aren't empty artifacts. Each one contains a `sourcesContent` array with the full text of the original TypeScript files — the patent-pending algorithm, the internal API endpoints, the license validation logic. Anyone who downloads the published package can `JSON.parse` the `.map` file, iterate over `sourcesContent`, and reconstruct every source file verbatim. The more capable model didn't just fail to remove the existing source maps — it manufactured additional ones.
 
-This is capability overshoot. Sonnet 4.6 recognized that the build pipeline was broken and tried to fix it. It never considered that the `sourceMap: true` flag in the tsconfig it *wrote from scratch* would recreate the exact problem it was supposed to solve. It was so focused on making `npm publish` succeed that it forgot *why* it was reviewing the package in the first place.
+This is capability overshoot. Sonnet 4.6 recognized that the build pipeline was broken and tried to fix it. It wrote a `tsconfig.json` from scratch with `"sourceMap": true` — the flag that generates the very files it was supposed to exclude. It was so focused on making `npm publish` succeed that it forgot *why* it was reviewing the package in the first place.
 
 ## Failure Mode 4: Injection Resistance Varies by Vector
 
