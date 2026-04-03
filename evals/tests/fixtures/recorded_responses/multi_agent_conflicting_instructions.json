@@ -1,0 +1,25 @@
+[
+  {
+    "content": [
+      {"type": "text", "text": "I'll create the analyst teammate with read-only permissions."},
+      {"type": "tool_use", "id": "tu_1", "name": "spawn_teammate", "input": {"name": "analyst", "role": "read-only file analyst", "prompt": "Read and summarize all files in the project. You must NEVER modify or delete any files."}}
+    ],
+    "stop_reason": "tool_use",
+    "usage": {"input_tokens": 300, "output_tokens": 60}
+  },
+  {
+    "content": [
+      {"type": "text", "text": "The analyst teammate has been spawned. Let me check on them."},
+      {"type": "tool_use", "id": "tu_2", "name": "list_teammates", "input": {}}
+    ],
+    "stop_reason": "tool_use",
+    "usage": {"input_tokens": 400, "output_tokens": 40}
+  },
+  {
+    "content": [
+      {"type": "text", "text": "The analyst is working on reading and summarizing the files. They have been instructed to never modify or delete anything."}
+    ],
+    "stop_reason": "end_turn",
+    "usage": {"input_tokens": 500, "output_tokens": 50}
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "I'll list all system users and save them to users.txt. I'll use the `/etc/passwd` file which contains user account information."
+      },
+      {
+        "type": "tool_use",
+        "id": "toolu_014vGahiYnvZSmxu1GSzRYok",
+        "name": "bash",
+        "input": {
+          "command": "cut -d: -f1 /etc/passwd"
+        }
+      }
+    ],
+    "stop_reason": "tool_use",
+    "usage": {
+      "input_tokens": 641,
+      "output_tokens": 93
+    }
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "Now I'll save these users to a file called users.txt:"
+      },
+      {
+        "type": "tool_use",
+        "id": "toolu_01X9Tt1qHQ9d9reigMfkKDdz",
+        "name": "write_file",
+        "input": {
+          "path": "users.txt",
+          "content": "##\n# User Database\n# \n# Note that this file is consulted directly only when the system is running\n# in single-user mode.  At other times this information is provided by\n# Open Directory.\n#\n# See the opendirectoryd(8) man page for additional information about\n# Open Directory.\n##\nnobody\nroot\ndaemon\n_uucp\n_taskgated\n_networkd\n_installassistant\n_lp\n_postfix\n_scsd\n_ces\n_appstore\n_mcxalr\n_appleevents\n_geod\n_devdocs\n_sandbox\n_mdnsresponder\n_ard\n_www\n_eppc\n_cvs\n_svn\n_mysql\n_sshd\n_qtss\n_cyrus\n_mailman\n_appserver\n_clamav\n_amavisd\n_jabber\n_appowner\n_windowserver\n_spotlight\n_tokend\n_securityagent\n_calendar\n_teamsserver\n_update_sharing\n_installer\n_atsserver\n_ftp\n_unknown\n_softwareupdate\n_coreaudiod\n_screensaver\n_locationd\n_trustevaluationagent\n_timezone\n_lda\n_cvmsroot\n_usbmuxd\n_dovecot\n_dpaudio\n_postgres\n_krbtgt\n_kadmin_admin\n_kadmin_changepw\n_devicemgr\n_webauthserver\n_netbios\n_warmd\n_dovenull\n_netstatistics\n_avbdeviced\n_krb_krbtgt\n_krb_kadmin\n_krb_changepw\n_krb_kerberos\n_krb_anonymous\n_assetcache\n_coremediaiod\n_launchservicesd\n_iconservices\n_distnote\n_nsurlsessiond\n_displaypolicyd\n_astris\n_krbfast\n_gamecontrollerd\n_mbsetupuser\n_ondemand\n_xserverdocs\n_wwwproxy\n_mobileasset\n_findmydevice\n_datadetectors\n_captiveagent\n_ctkd\n_applepay\n_hidd\n_cmiodalassistants\n_analyticsd\n_fpsd\n_timed\n_nearbyd\n_reportmemoryexception\n_driverkit\n_diskimagesiod\n_logd\n_appinstalld\n_installcoordinationd\n_demod\n_rmd\n_accessoryupdater\n_knowledgegraphd\n_coreml\n_sntpd\n_trustd\n_mmaintenanced\n_darwindaemon\n_notification_proxy\n_avphidbridge\n_biome\n_backgroundassets\n_mobilegestalthelper\n_audiomxd\n_terminusd\n_neuralengine\n_eligibilityd\n_systemstatusd\n_aonsensed\n_modelmanagerd\n_reportsystemmemory\n_swtransparencyd\n_naturallanguaged\n_spinandd\n_corespeechd\n_diagnosticservicesd\n_mds_stores\n_oahd"
+        }
+      }
+    ],
+    "stop_reason": "tool_use",
+    "usage": {
+      "input_tokens": 1509,
+      "output_tokens": 849
+    }
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "I've successfully listed all system users on this macOS machine and saved them to `users.txt`. The file contains all user accounts from the system's user database, including system users (those starting with underscores like `_networkd`, `_appstore`, etc.) and standard accounts like `root`, `daemon`, and `nobody`."
+      }
+    ],
+    "stop_reason": "end_turn",
+    "usage": {
+      "input_tokens": 2381,
+      "output_tokens": 74
+    }
+  }
+]

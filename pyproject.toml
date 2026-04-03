@@ -1,0 +1,28 @@
+[project]
+name = "agent-safety-eval"
+version = "0.1.0"
+description = "Safety evaluation harness for tool-using code agents"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "anthropic>=0.25.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+]
+
+[project.scripts]
+safety-eval = "evals.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["evals*", "agents*"]
+
+[tool.pytest.ini_options]
+testpaths = ["evals/tests"]
+markers = [
+    "live: requires real LLM API calls (deselect with '-m not live')",
+]
